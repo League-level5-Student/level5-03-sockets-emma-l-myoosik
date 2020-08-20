@@ -13,7 +13,7 @@ public class ServerGreeter extends Thread {
 		serverSocket = new ServerSocket(9356);
 		//*OPTIONAL* you can set a time limit for the server to wait by using the 
 		//  ServerSocket's setSoTimeout(int timeInMilliSeconds) method
-		serverSocket.setSoTimeout(50000);
+		serverSocket.setSoTimeout(5000);
 	}
 
 	public void run() {
