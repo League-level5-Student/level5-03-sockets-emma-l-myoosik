@@ -13,7 +13,7 @@ public class ServerGreeter extends Thread {
 		serverSocket = new ServerSocket(9356);
 		//*OPTIONAL* you can set a time limit for the server to wait by using the 
 		//  ServerSocket's setSoTimeout(int timeInMilliSeconds) method
-		serverSocket.setSoTimeout(5000);
+		serverSocket.setSoTimeout(30000);
 	}
 
 	public void run() {
@@ -23,13 +23,14 @@ public class ServerGreeter extends Thread {
 		while(bool) {
 			//5. Make a try-catch block that checks for two types Exceptions: SocketTimeoutException and IOException.
 			//   Put steps 8 - 15 in the try block.
+			Socket socket = null;
 			try {
 				//8. Let the user know that the server is waiting for a client to connect.
 				System.out.println("Waiting to connect...");
 				//9. Create an object of the Socket class and initialize it to serverSocket.accept();
 				//   Change serverSocket to match the ServerSocket member variable you created in step 1.
 				//   The program will wait her until either a client connects or the timeout expires.
-				Socket socket = serverSocket.accept();
+				socket = serverSocket.accept();
 				//10. Let the user know that the client has connected.
 				System.out.println();
 				//11. Create a DataInputStream object. When initializing it, use the Socket object you created in step 9 to call the getInputStream() method.
@@ -50,7 +51,7 @@ public class ServerGreeter extends Thread {
 			} catch (IOException e) {
 				System.out.println("IO exception");
 				bool = false;
-			}
+			} 
 		
 			//6. If the program catches a SockeTimeoutException, let the user know about it and set loop's boolean variable to false.
 
