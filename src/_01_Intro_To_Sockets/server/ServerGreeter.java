@@ -34,12 +34,12 @@ public class ServerGreeter extends Thread {
 				//10. Let the user know that the client has connected.
 				System.out.println();
 				//11. Create a DataInputStream object. When initializing it, use the Socket object you created in step 9 to call the getInputStream() method.
-				DataInputStream dis = (DataInputStream) socket.getInputStream();
+				DataInputStream dis = new DataInputStream(socket.getInputStream());
 				//12. Print the message from the DataInputStream object using the readUTF() method
 				System.out.println(dis.readUTF());
 				
 				//13. Create a DataOutputStream object. When initializing it, use the Server object you created in step 9 to call the getOutputStream() method.
-				DataOutputStream dos = (DataOutputStream) socket.getOutputStream();
+				DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 				//14. Use the DataOutputStream object to send a message to the client using the writeUTF(String message) method.
 				dos.writeUTF("Hello!");
 				
